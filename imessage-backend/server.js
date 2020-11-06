@@ -5,17 +5,18 @@ import cors from 'cors'
 import mongoData from './mongoData.js'
 const app = express()
 const port = process.env.PORT || 9000
-
+import dotenv from 'dotenv'
+dotenv.config()
 app.use(express.json())
 app.use(cors());
 var pusher = new Pusher({
-    appId: '1093278',
-    key: '79ca682de0abbb98912c',
-    secret: '1122ff41bce2320a6bbd',
-    cluster: 'eu',
+    appId: process.env.PUSHER_APP_ID,
+    key: process.env.PUSHER_KEY,
+    secret: process.env.PUSHER_SECRET,
+    cluster: process.env.PUSHER_CLUSTER,
     useTLS: true
 });
-const mongoURI = 'mongodb+srv://admin:aLPsOnBVNk3PEvBu@cluster0.fhmmn.mongodb.net/imessage?retryWrites=true&w=majority';
+const mongoURI = process.env.MONGO_URL;
 mongoose.connect(mongoURI, {
     useCreateIndex: true,
     useUnifiedTopology: true,
