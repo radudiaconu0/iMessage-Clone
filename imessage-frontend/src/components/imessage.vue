@@ -7,17 +7,17 @@
 
 <script>
 import Sidebar from "./Sidebar";
-import Chat from './Chat'
+import Chat from "./Chat";
 export default {
   components: {
     Sidebar,
-    Chat
+    Chat,
   },
 };
 </script>
 
 <style>
 .imessage {
-    display: flex;
+  display: flex;
 }
 </style>

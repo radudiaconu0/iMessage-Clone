@@ -27,8 +27,8 @@ import store from "@/store";
 import { auth } from "@/firebase";
 import { reactive, watchEffect } from "@vue/composition-api";
 import axios from "@/axios";
-var pusher = new Pusher("79ca682de0abbb98912c", {
-  cluster: "eu",
+var pusher = new Pusher(process.env.PUSHER_KEY, {
+  cluster: process.env.PUSHER_CLUSTER,
 });
 export default {
   name: "Sidebar",
@@ -41,7 +41,7 @@ export default {
     const getChats = () => {
       axios.get("/get/conversationList").then((res) => {
         state.chats.value = res.data;
-        console.log(state.chats)
+        console.log(state.chats);
       });
     };
     watchEffect(() => {

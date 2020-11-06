@@ -33,8 +33,8 @@ import store from "@/store";
 import { Flipper, Flipped } from "vue-flip-toolkit";
 import axios from "@/axios";
 import Pusher from "pusher-js";
-var pusher = new Pusher("79ca682de0abbb98912c", {
-  cluster: "eu",
+var pusher = new Pusher(process.env.PUSHER_KEY, {
+  cluster: process.env.PUSHER_CLUSTER,
 });
 export default {
   name: "Chat",

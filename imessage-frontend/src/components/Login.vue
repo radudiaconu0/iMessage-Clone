@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="login__logo">
-      <img src='../assets/logo.png'>
+      <img src="../assets/logo.png" />
       <h1>iMessage</h1>
       <md-button @click="signIn" class="btn">Sign In</md-button>
     </div>
@@ -9,19 +9,17 @@
 </template>
 
 <script>
-
-import {auth, provider} from "@/firebase";
+import { auth, provider } from "@/firebase";
 import { defineComponent } from "@vue/composition-api";
 
 export default defineComponent({
   name: "Login",
   methods: {
     signIn() {
-      auth.signInWithPopup(provider)
-          .catch(error => alert(error.message))
-    }
-  }
-})
+      auth.signInWithPopup(provider).catch((error) => alert(error.message));
+    },
+  },
+});
 </script>
 
 <style>
@@ -48,5 +46,4 @@ export default defineComponent({
   background-color: gainsboro;
   color: #3ea4fb;
 }
-
 </style>

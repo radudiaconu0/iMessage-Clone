@@ -1,33 +1,37 @@
 <template>
-  <div :class="user.email === data.email? 'message message__sender' : 'message'">
+  <div
+    :class="user.email === data.email ? 'message message__sender' : 'message'"
+  >
     <md-avatar class="message__photo">
-      <img :src="data.photo">
+      <img :src="data.photo" />
     </md-avatar>
     <p>{{ data.message }}</p>
-    <small>{{ new Date(data.timestamp ? data.timestamp.toDate() : null).toLocaleString() }}</small>
+    <small>{{
+      new Date(data.timestamp ? data.timestamp.toDate() : null).toLocaleString()
+    }}</small>
   </div>
 </template>
 
 <script>
 import store from "@/store";
-
-export default {
+import { defineComponent } from "@vue/composition-api";
+export default defineComponent({
   name: "Message",
   props: {
     id: {
-      required: true
+      required: true,
     },
     data: {
-      required: true
-    }
+      required: true,
+    },
   },
   setup() {
-    const user = store.getters.user
+    const user = store.getters.user;
     return {
-      user
-    }
-  }
-}
+      user,
+    };
+  },
+});
 </script>
 
 <style>
@@ -74,5 +78,4 @@ export default {
   background-color: #3cabfa;
   color: white;
 }
-
 </style>
